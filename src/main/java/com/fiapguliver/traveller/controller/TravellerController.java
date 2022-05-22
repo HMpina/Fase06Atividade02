@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fiapguliver.traveller.model.Traveller;
 import com.fiapguliver.traveller.repository.TravellerRepository;
 
-import antlr.collections.List;
 
 @RestController
 @RequestMapping("/traveller")
@@ -22,9 +21,5 @@ public class TravellerController {
 		return "Aplicacao online";
 	}
 	
-	@GetMapping
-	public List<Traveller> listar() {
-		return travellerRepository.findAll();
-	}
-		
+
 }
