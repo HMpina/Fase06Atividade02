@@ -10,10 +10,10 @@ import javax.persistence.Id;
 @Entity
 public class Traveller {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
-	//@GeneratedValue(generator = "increment")
-	//@GenericGenerator(name = "increment", strategy = "increment")
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name = "increment", strategy = "increment")
 	
 	private Long codLocalidade;
 	public Long getCodLocalidade() {
