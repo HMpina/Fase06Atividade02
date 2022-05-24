@@ -2,10 +2,10 @@ package com.traveller.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-//import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.GenericGenerator;
+
 
 @Entity
 public class Traveller {
@@ -16,6 +16,22 @@ public class Traveller {
 	@GenericGenerator(name = "increment", strategy = "increment")
 	
 	private Long codLocalidade;
+	private String nomeLocal;
+	private double avaliacaoMedia;
+	private String categoria;
+	private double latitude;
+	private double longitude;
+	private String logradouro;
+	private String numero;
+	private String complemento;
+	private String estado;
+	private String cidade;
+	private String CEP;
+	private String site;
+	private String telefoneLocal;
+	
+	
+	
 	public Long getCodLocalidade() {
 		return codLocalidade;
 	}
@@ -100,20 +116,7 @@ public class Traveller {
 	public void setTelefoneLocal(String telefoneLocal) {
 		this.telefoneLocal = telefoneLocal;
 	}
-	private String nomeLocal;
-	private double avaliacaoMedia;
-	private String categoria;
-	private double latitude;
-	private double longitude;
-	private String logradouro;
-	private String numero;
-	private String complemento;
-	private String estado;
-	private String cidade;
-	private String CEP;
-	private String site;
-	private String telefoneLocal;
-	
+
 	
 	
 }
