@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Lista Dados</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+
+<table class="table table-striped">
+	<thead class="thead-dark">
+		<tr>
+			<th scope="col"> #</th>
+			<th scope="col"> Nome Local</th>
+			<th scope="col"> Avaliacao Media</th>
+			<th scope="col"> Categoria</th>
+			<th scope="col"> Latitude</th>
+			<th scope="col"> Longitude</th>
+			<th scope="col"> logradouro</th>
+			<th scope="col"> numero</th>
+			<th scope="col"> complemento</th>
+			<th scope="col"> estado</th>
+			<th scope="col"> cidade</th>
+			<th scope="col"> CEP</th>
+			<th scope="col"> site</th>
+			<th scope="col"> Telefone do local</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="cat : ${listaDados}">
+			<td th:text="${cat.codLocalidade}"> 1</td>
+			<td th:text="${cat.nomeLocal}"> Hotel1</td>
+			<td th:text="${cat.avaliacaoMedia}"> 4.1</td>
+			<td th:text="${cat.categoria}"> Hotel</td>
+			<td th:text="${cat.latitude}"> -42.215121</td>
+			<td th:text="${cat.longitude}"> -43.051545</td>
+			<td th:text="${cat.logradouro}"> Rua 1</td>
+			<td th:text="${cat.numero}"> 1111</td>
+			<td th:text="${cat.complemento}"> Andar1</td>
+			<td th:text="${cat.estado}"> SP</td>
+			<td th:text="${cat.cidade}"> Sao Paulo</td>
+			<td th:text="${cat.CEP}"> 13.212-111</td>
+			<td th:text="${cat.site}"> www.hotel1.com.br</td>
+			<td th:text="${cat.telefoneLocal}"> +55(11)99999-1111</td>
+	</tr>
+	</tbody>
+	
+</table>
+
+</div>
+</body>
+</html>
