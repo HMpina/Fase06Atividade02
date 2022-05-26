@@ -30,6 +30,11 @@ public class TravellerController {
 		request.addAttribute("listaDados", lista);
 		return "listaDados";
 	}
-	
+
+	@GetMapping("formulario")
+	public String formulario(Model request) {
+		return "formulario";
+	}
+
 	
 }
