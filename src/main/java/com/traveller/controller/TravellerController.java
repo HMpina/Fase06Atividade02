@@ -44,11 +44,11 @@ public class TravellerController {
 		return "listaDados";
 	}
 
-	@GetMapping("update/{codLocalidade}/{estado}")
-	public String update(@PathVariable Long codLocalidade, @PathVariable String estado) {
+	@GetMapping("update/{codLocalidade}/{cidade}")
+	public String update(@PathVariable Long codLocalidade, @PathVariable String cidade) {
 		
 		Traveller trav = travellerRepository.getById(codLocalidade);
-		trav.setEstado(estado);
+		trav.setEstado(cidade);
 		
 		travellerRepository.save(trav);
 		
