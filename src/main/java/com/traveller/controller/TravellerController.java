@@ -44,17 +44,23 @@ public class TravellerController {
 		return "listaDados";
 	}
 
-	@GetMapping("update/{codLocalidade}/{latitude}/{longitude}/{logradouro}/{numero}/{complemento}/{CEP}/{site}")
-	public String update(@PathVariable Long codLocalidade, @PathVariable double latitude, @PathVariable double longitude, @PathVariable String logradouro, @PathVariable String numero, @PathVariable String complemento, @PathVariable String CEP, @PathVariable String site) {
+	@GetMapping("update/{codLocalidade}/{nomeLocal}/{avaliacaoMedia}/{categoria}//{latitude}/{longitude}/{logradouro}/{numero}/{complemento}/{CEP}/{site}")
+	public String update(@PathVariable Long codLocalidade, @PathVariable String nomeLocal, @PathVariable double avaliacaoMedia, @PathVariable String categoria, @PathVariable double latitude, @PathVariable double longitude, @PathVariable String logradouro, @PathVariable String numero, @PathVariable String complemento, @PathVariable String estado, @PathVariable String cidade, @PathVariable String CEP, @PathVariable String site, @PathVariable String telefoneLocal) {
 		
 		Traveller trav = travellerRepository.getById(codLocalidade);
+		trav.setNomeLocal(nomeLocal);
+		trav.setAvaliacaoMedia(avaliacaoMedia);
+		trav.setCategoria(categoria);
 		trav.setLatitude(latitude);
 		trav.setLongitude(longitude);
 		trav.setLogradouro(logradouro);
 		trav.setNumero(numero);
 		trav.setComplemento(complemento);
+		trav.setEstado(estado);
+		trav.setCidade(cidade);
 		trav.setCEP(CEP);
 		trav.setSite(site);
+		trav.setTelefoneLocal(telefoneLocal);
 		
 		travellerRepository.save(trav);
 		
