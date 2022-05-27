@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -43,5 +44,15 @@ public class TravellerController {
 		return "listaDados";
 	}
 
+	@GetMapping("/update/{id}/{status}")
+	public String update(@PathVariable Long codLocalidade, @PathVariable String estado) {
+		
+		Traveller trav = travellerRepository.getById(codLocalidade);
+		trav.setEstado(estado);
+		
+		travellerRepository.save(trav);
+		
+		return "redirect:/listaDados";
+	}
 	
 }
