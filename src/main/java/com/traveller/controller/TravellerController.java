@@ -40,7 +40,7 @@ public class TravellerController {
 	@PostMapping("formularioNovo")
 	public String formularioNovo(Traveller requisicao) {
 		travellerRepository.save(requisicao);
-		return "hotel";
+		return "listaDados";
 	}
 
 	
