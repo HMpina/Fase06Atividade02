@@ -44,7 +44,7 @@ public class TravellerController {
 		return "listaDados";
 	}
 
-	@GetMapping("/update/{id}/{status}")
+	@GetMapping("update/{codLocalidade}/{estado}")
 	public String update(@PathVariable Long codLocalidade, @PathVariable String estado) {
 		
 		Traveller trav = travellerRepository.getById(codLocalidade);
