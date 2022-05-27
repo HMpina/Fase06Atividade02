@@ -48,7 +48,7 @@ public class TravellerController {
 	public String update(@PathVariable Long codLocalidade, @PathVariable String cidade) {
 		
 		Traveller trav = travellerRepository.getById(codLocalidade);
-		trav.setEstado(cidade);
+		trav.setCidade(cidade);
 		
 		travellerRepository.save(trav);
 		
