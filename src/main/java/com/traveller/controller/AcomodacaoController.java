@@ -2,7 +2,7 @@ package com.traveller.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +18,7 @@ import com.traveller.repository.AcomodacaoRepository;
 	@RequestMapping("/acomodacao")
 	public class AcomodacaoController {
 
-		@Autowired
+		//@Autowired
 		private AcomodacaoRepository acomodacaoRepository;
 		
 		@GetMapping("/listaAcomodacao")

@@ -2,23 +2,24 @@ package com.traveller.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 //import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.traveller.model.Produto;
 import com.traveller.repository.ProdutoRepository;
 
 
-@Controller
+@RestController
 @RequestMapping("/")
 public class ProdutoController {
 
-	@Autowired
+	///@Autowired
 	private ProdutoRepository produtoRepository;
 	
 	@GetMapping("listaDados")
