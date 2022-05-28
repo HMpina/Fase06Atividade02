@@ -22,19 +22,19 @@ import com.traveller.repository.AcomodacaoRepository;
 		private AcomodacaoRepository acomodacaoRepository;
 		
 		@GetMapping("listaAcomodacao")
-		public String listaDados(Model request) {
+		public String listaAcomoodacaoo(Model request) {
 			List<Acomodacao> lista = acomodacaoRepository.findAll();
 			request.addAttribute("listaAcomodacao", lista);
 			return "listaAcomodacao";
 		}
 
 		@GetMapping("formularioacomodacao")
-		public String formulario(Model request) {
+		public String formularioacomodacao(Model request) {
 			return "formularioacomodacao";
 		}
 
 		@PostMapping("acomodacaoNovo")
-		public String formularioNovo(Acomodacao requisicao) {
+		public String acomodacaoNovo(Acomodacao requisicao) {
 			acomodacaoRepository.save(requisicao);
 			return "acomodacaoNovo";
 		}
