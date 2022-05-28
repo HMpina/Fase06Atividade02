@@ -40,7 +40,7 @@ public class TravellerController {
 		return "formulario";
 	}
 
-	@GetMapping("acomodacao/formularioacomodacao")
+	@GetMapping("formularioacomodacao")
 	public String formularioacomodacao(Model request) {
 		return "formularioacomodacao";
 	}
