@@ -16,25 +16,25 @@ import com.traveller.repository.ProdutoRepository;
 
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/produto")
 public class ProdutoController {
 
 	///@Autowired
 	private ProdutoRepository produtoRepository;
 	
-	@GetMapping("listaDados")
+	@GetMapping("/listaDados")
 	public String listaDados(Model request) {
 		List<Produto> lista = produtoRepository.findAll();
 		request.addAttribute("listaDados", lista);
 		return "listaDados";
 	}
 
-	@GetMapping("formulario")
+	@GetMapping("/formulario")
 	public String formulario(Model request) {
 		return "formulario";
 	}
 
-	@PostMapping("formularioNovo")
+	@PostMapping("/formularioNovo")
 	public String formularioNovo(Produto requisicao) {
 		produtoRepository.save(requisicao);
 		return "listaDados";
