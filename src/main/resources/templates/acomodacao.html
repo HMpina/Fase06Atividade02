@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Listar Acomodações</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+
+<table class="table table-striped">
+	<thead class="thead-dark">
+		<tr>
+			<th scope="col"> #</th>
+			<th scope="col"> Capacidade da Acomodação</th>
+			<th scope="col"> Tipo de Cama</th>
+			<th scope="col"> Wifi?</th>
+			<th scope="col"> Café da manhã?</th>
+			<th scope="col"> Disponível?</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="cat : ${listaAcomodacao}">
+			<td th:text="${cat.codAcomodacao}"> </td>
+			<td th:text="${cat.capacidadeAcomodacao}"> </td>
+			<td th:text="${cat.tipoCama}"> </td>
+			<td th:text="${cat.wifi}"> </td>
+			<td th:text="${cat.cafeManha}"> </td>
+			<td th:text="${cat.disponibilidade}"> </td>
+	</tr>
+	</tbody>
+	
+</table>
+
+</div>
+</body>
+</html>

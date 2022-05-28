@@ -44,7 +44,7 @@ public class TravellerController {
 		return "listaDados";
 	}
 
-	@GetMapping("update/{codLocalidade}/{nomeLocal}/{avaliacaoMedia}/{categoria}//{latitude}/{longitude}/{logradouro}/{numero}/{complemento}/{CEP}/{site}")
+	@GetMapping("update/{codLocalidade}/{nomeLocal}/{avaliacaoMedia}/{categoria}/{latitude}/{longitude}/{logradouro}/{numero}/{complemento}/{CEP}/{site}")
 	public String update(@PathVariable Long codLocalidade, @PathVariable String nomeLocal, @PathVariable double avaliacaoMedia, @PathVariable String categoria, @PathVariable double latitude, @PathVariable double longitude, @PathVariable String logradouro, @PathVariable String numero, @PathVariable String complemento, @PathVariable String estado, @PathVariable String cidade, @PathVariable String CEP, @PathVariable String site, @PathVariable String telefoneLocal) {
 		
 		Traveller trav = travellerRepository.getById(codLocalidade);
@@ -66,5 +66,18 @@ public class TravellerController {
 		
 		return "redirect:/listaDados";
 	}
+	
+	@GetMapping("reservar/{codLocalidade}/{nomeLocal}/{avaliacaoMedia}/{categoria}/{latitude}/{longitude}/{logradouro}/{numero}/{complemento}/{CEP}/{site}")
+		public String update(@PathVariable Long codLocalidade, @PathVariable String nomeLocal) {
+		
+		Traveller trav = travellerRepository.getById(codLocalidade);
+		trav.setNomeLocal(nomeLocal);
+		
+		travellerRepository.save(trav);
+		
+		return "redirect:/listaDados";
+	}
+		
+	
 	
 }

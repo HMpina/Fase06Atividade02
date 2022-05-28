@@ -7,3 +7,4 @@ import com.traveller.model.Traveller;
 public interface TravellerRepository extends JpaRepository<Traveller, Long> {
 
 }
+
