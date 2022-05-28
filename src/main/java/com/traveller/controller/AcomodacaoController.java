@@ -33,10 +33,10 @@ import com.traveller.repository.AcomodacaoRepository;
 			return "formularioacomodacao2";
 		}
 
-		@PostMapping("/acomodacaoNovo")
-		public String acomodacaoNovo(Acomodacao requisicao) {
+		@PostMapping("/acomodacaoNovo2")
+		public String acomodacaoNovo2(Acomodacao requisicao) {
 			acomodacaoRepository.save(requisicao);
-			return "acomodacaoNovo";
+			return "acomodacaoNovo2";
 		}
 
 	
