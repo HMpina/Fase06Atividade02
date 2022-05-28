@@ -38,6 +38,11 @@ public class TravellerController {
 		return "formulario";
 	}
 
+	@GetMapping("acomodacao/formularioacomodacao")
+	public String formularioacomodacao(Model request) {
+		return "formularioacomodacao";
+	}
+
 	@PostMapping("formularioNovo")
 	public String formularioNovo(Traveller requisicao) {
 		travellerRepository.save(requisicao);

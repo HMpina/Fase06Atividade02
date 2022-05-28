@@ -28,9 +28,9 @@ import com.traveller.repository.AcomodacaoRepository;
 			return "listaAcomodacao";
 		}
 		
-		@GetMapping("/formularioacomodacao")
-		public String formularioacomodacao(Model request) {
-			return "formularioacomodacao";
+		@GetMapping("/formularioacomodacao2")
+		public String formularioacomodacao2(Model request) {
+			return "formularioacomodacao2";
 		}
 
 		@PostMapping("/acomodacaoNovo")
