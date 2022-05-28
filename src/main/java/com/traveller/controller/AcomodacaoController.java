@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.traveller.model.Acomodacao;
+import com.traveller.model.Traveller;
 import com.traveller.repository.AcomodacaoRepository;
 
 	
@@ -22,12 +23,12 @@ import com.traveller.repository.AcomodacaoRepository;
 		private AcomodacaoRepository acomodacaoRepository;
 		
 		@GetMapping("listaAcomodacao")
-		public String listaAcomoodacaoo(Model request) {
+		public String listaAcomodacao(Model request) {
 			List<Acomodacao> lista = acomodacaoRepository.findAll();
 			request.addAttribute("listaAcomodacao", lista);
 			return "listaAcomodacao";
 		}
-
+		
 		@GetMapping("formularioacomodacao")
 		public String formularioacomodacao(Model request) {
 			return "formularioacomodacao";
