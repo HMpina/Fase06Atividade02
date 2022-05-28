@@ -8,7 +8,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 
 @Entity
-public class Acomodacao extends Produto {
+public class Acomodacao{
 	
 	@Id
 	//@GeneratedValue(strategy = GenerationType.IDENTITY)
