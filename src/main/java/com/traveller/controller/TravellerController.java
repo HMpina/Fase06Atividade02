@@ -46,7 +46,7 @@ public class TravellerController {
 	}
 
 	@SuppressWarnings("null")
-	@PostMapping("/acomodacaoNovo")
+	@PostMapping("acomodacaoNovo")
 	public String acomodacaoNovo(Acomodacao requisicao) {
 		CrudRepository<Acomodacao, Long> acomodacaoRepository = null;
 		acomodacaoRepository.save(requisicao);
