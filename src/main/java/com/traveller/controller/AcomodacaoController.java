@@ -15,32 +15,32 @@ import com.traveller.repository.AcomodacaoRepository;
 
 	
 	@RestController
-	@RequestMapping("/")
+	@RequestMapping("/acomodacao")
 	public class AcomodacaoController {
 
 		@Autowired
 		private AcomodacaoRepository acomodacaoRepository;
 		
-		@GetMapping("listaAcomodacao")
+		@GetMapping("/listaAcomodacao")
 		public String listaAcomodacao(Model request) {
 			List<Acomodacao> lista = acomodacaoRepository.findAll();
 			request.addAttribute("listaAcomodacao", lista);
 			return "listaAcomodacao";
 		}
 		
-		@GetMapping("formularioacomodacao")
+		@GetMapping("/formularioacomodacao")
 		public String formularioacomodacao(Model request) {
 			return "formularioacomodacao";
 		}
 
-		@PostMapping("acomodacaoNovo")
+		@PostMapping("/acomodacaoNovo")
 		public String acomodacaoNovo(Acomodacao requisicao) {
 			acomodacaoRepository.save(requisicao);
 			return "acomodacaoNovo";
 		}
 
 	
-	@GetMapping("criar/{codAcomodacao}/{capacidadeAcomodacao}/{tipoCama}/{wifi}/{cafeManha}/{disponibilidade}")
+	@GetMapping("/criar/{codAcomodacao}/{capacidadeAcomodacao}/{tipoCama}/{wifi}/{cafeManha}/{disponibilidade}")
 	public String criar(@PathVariable Long codAcomodacao, @PathVariable int capacidadeAcomodacao, @PathVariable String tipoCama, @PathVariable boolean wifi, @PathVariable boolean cafeManha, @PathVariable boolean disponibilidade) {
 	
 	Acomodacao trav = acomodacaoRepository.getById(codAcomodacao);
@@ -55,7 +55,7 @@ import com.traveller.repository.AcomodacaoRepository;
 	return "redirect:/listaAcomodacao";
 }
 
-	@GetMapping("reservar/{codAcomodacao}/{disponibilidade}")
+	@GetMapping("/reservar/{codAcomodacao}/{disponibilidade}")
 	public String update(@PathVariable Long codAcomodacao, @PathVariable boolean disponibilidade) {
 	
 	Acomodacao trav = acomodacaoRepository.getById(codAcomodacao);
