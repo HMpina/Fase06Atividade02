@@ -17,7 +17,7 @@ public class TravellerApplication {
 
 	@GetMapping("/")
 	public String index(){
-		return "Olá Mundo!";
+		return "Olá Mundo  !";
 	}
 	
 	
