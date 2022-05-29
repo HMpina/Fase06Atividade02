@@ -39,7 +39,7 @@ public class AcomodacaoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(acomodacaoService.save(acomodacaoModel));
     }
 
-    @GetMapping
+    @GetMapping("/listaAcomodacao")
 	public String listaAcomodacao(Model request) {
 		List<AcomodacaoModel> lista = acomodacaoService.findAll();
 		request.addAttribute("listaAcomodacao", lista);	
