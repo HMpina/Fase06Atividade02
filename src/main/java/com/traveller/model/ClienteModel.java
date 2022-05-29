@@ -25,4 +25,23 @@ public class ClienteModel {
     @Column(nullable = false)
     private String telefoneCliente;
     
+	public Long getCodCliente() {
+		return codCliente;
+	}
+	public void setCodCliente(Long codCliente) {
+		this.codCliente = codCliente;
+	}
+	public String getEmailCliente() {
+		return emailCliente;
+	}
+	public void setEmailCliente(String emailCliente) {
+		this.emailCliente = emailCliente;
+	}
+	public String getTelefoneCliente() {
+		return telefoneCliente;
+	}
+	public void setTelefoneCliente(String telefoneCliente) {
+		this.telefoneCliente = telefoneCliente;
+	}
+    
 }
