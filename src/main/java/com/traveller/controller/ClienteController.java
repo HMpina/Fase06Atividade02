@@ -26,7 +26,7 @@ import com.traveller.services.ClienteService;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
-@RequestMapping("/cliente-db")
+@RequestMapping("/cliente_db")
 public class ClienteController {
 
     final ClienteService clienteService;
