@@ -8,7 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.traveller.model.Acomodacao;
+import com.traveller.model.AcomodacaoModel;
 import com.traveller.repository.AcomodacaoRepository;
 
 @Service
@@ -21,21 +21,21 @@ public class AcomodacaoService {
     }
 
     @Transactional
-    public Acomodacao save(Acomodacao acomodacao) {
-        return acomodacaoRepository.save(acomodacao);
+    public AcomodacaoModel save(AcomodacaoModel acomodacaoModel) {
+        return acomodacaoRepository.save(acomodacaoModel);
     }
 
-    public Page<Acomodacao> findAll(Pageable pageable) {
+    public Page<AcomodacaoModel> findAll(Pageable pageable) {
         return acomodacaoRepository.findAll(pageable);
     }
 
-    public Optional<Acomodacao> findById(Long codAcomodacao) {
+    public Optional<AcomodacaoModel> findById(Long codAcomodacao) {
         return acomodacaoRepository.findById(codAcomodacao);
     }
 
     @Transactional
-    public void delete(Acomodacao acomodacao) {
-        acomodacaoRepository.delete(acomodacao);
+    public void delete(AcomodacaoModel acomodacaoModel) {
+        acomodacaoRepository.delete(acomodacaoModel);
     }
 
 	

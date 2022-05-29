@@ -3,22 +3,23 @@ package com.traveller.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
+//import org.hibernate.annotations.GenericGenerator;
 
 
 @Entity
 @Table(name = "acomodacao")
-public class Acomodacao{
+public class AcomodacaoModel{
 	
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@GeneratedValue(generator = "increment")
-	@GenericGenerator(name = "increment", strategy = "increment")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	//@GeneratedValue(generator = "increment")
+	//@GenericGenerator(name = "increment", strategy = "increment")
 	private Long codAcomodacao;
-    @Column(nullable = false, length = 2)
+    @Column(nullable = false)
 	private int capacidadeAcomodacao;
     @Column(nullable = false)
     private String tipoCama;

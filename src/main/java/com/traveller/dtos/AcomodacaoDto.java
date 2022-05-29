@@ -1,23 +1,20 @@
 package com.traveller.dtos;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.NotNull;
+//import javax.validation.constraints.Size;
 
 public class AcomodacaoDto {
 
-
-
 	    @NotBlank
-	    @Size(max = 2)
 		private int capacidadeAcomodacao;
 	    @NotBlank
-	    @Size(max = 15)
 		private String tipoCama;
-	    @NotBlank
+	    @NotNull
 		private boolean wifi;
-	    @NotBlank
+	    @NotNull
 		private boolean cafeManha;
-	    @NotBlank
+	    @NotNull
 		private boolean disponibilidade;
 
 	    public int getCapacidadeAcomodacao() {

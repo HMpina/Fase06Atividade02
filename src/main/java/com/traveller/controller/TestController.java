@@ -21,8 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.traveller.dtos.AcomodacaoDto;
-import com.traveller.model.Acomodacao;
+import com.traveller.model.AcomodacaoModel;
 import com.traveller.services.AcomodacaoService;
 
 
@@ -38,20 +37,19 @@ public class TestController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> saveAcomodacao(@RequestBody @Valid AcomodacaoDto acomodacaoDto){
-    	Acomodacao acomodacao = new Acomodacao();
-        BeanUtils.copyProperties(acomodacaoDto, acomodacao);
-        return ResponseEntity.status(HttpStatus.CREATED).body(acomodacaoService.save(acomodacao));
+    public ResponseEntity<Object> saveAcomodacao(@RequestBody @Valid AcomodacaoModel acomodacaoModel){
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(acomodacaoService.save(acomodacaoModel));
     }
 
     @GetMapping
-    public ResponseEntity<Page<Acomodacao>> getAllParkingSpots(@PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable){
+    public ResponseEntity<Page<AcomodacaoModel>> getAllParkingSpots(@PageableDefault(page = 0, size = 10, sort = "codAcomodacao", direction = Sort.Direction.ASC) Pageable pageable){
         return ResponseEntity.status(HttpStatus.OK).body(acomodacaoService.findAll(pageable));
     }
 
     @GetMapping("/{codAcomocadao}")
     public ResponseEntity<Object> getOneParkingSpot(@PathVariable(value = "codAcomocadao") Long codAcomocadao){
-        Optional<Acomodacao> acomodacaoOptional = acomodacaoService.findById(codAcomocadao);
+        Optional<AcomodacaoModel> acomodacaoOptional = acomodacaoService.findById(codAcomocadao);
         if (!acomodacaoOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Parking Spot not found.");
         }
@@ -60,7 +58,7 @@ public class TestController {
 
     @DeleteMapping("/{codAcomocadao}")
     public ResponseEntity<Object> deleteParkingSpot(@PathVariable(value = "codAcomocadao") Long codAcomocadao){
-        Optional<Acomodacao> acomodacaoOptional = acomodacaoService.findById(codAcomocadao);
+        Optional<AcomodacaoModel> acomodacaoOptional = acomodacaoService.findById(codAcomocadao);
         if (!acomodacaoOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Parking Spot not found.");
         }
@@ -70,15 +68,13 @@ public class TestController {
 
     @PutMapping("/{codAcomocadao}")
     public ResponseEntity<Object> updateParkingSpot(@PathVariable(value = "codAcomocadao") Long codAcomocadao,
-                                                    @RequestBody @Valid AcomodacaoDto acomodacaoDto){
-        Optional<Acomodacao> acomodacaoOptional = acomodacaoService.findById(codAcomocadao);
+                                                    @RequestBody @Valid AcomodacaoModel acomodacaoModel){
+        Optional<AcomodacaoModel> acomodacaoOptional = acomodacaoService.findById(codAcomocadao);
         if (!acomodacaoOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Parking Spot not found.");
         }
-        Acomodacao acomodacao = new Acomodacao();
-        BeanUtils.copyProperties(acomodacaoDto, acomodacao);
-        acomodacao.setCodAcomodacao(acomodacaoOptional.get().getCodAcomodacao());
-                return ResponseEntity.status(HttpStatus.OK).body(acomodacaoService.save(acomodacao));
+                acomodacaoModel.setCodAcomodacao(acomodacaoOptional.get().getCodAcomodacao());
+                return ResponseEntity.status(HttpStatus.OK).body(acomodacaoService.save(acomodacaoModel));
     }
 
 
