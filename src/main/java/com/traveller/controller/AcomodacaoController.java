@@ -1,15 +1,13 @@
 package com.traveller.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,11 +25,11 @@ import com.traveller.services.AcomodacaoService;
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/acomodacao")
-public class TestController {
+public class AcomodacaoController {
 
     final AcomodacaoService acomodacaoService;
 
-    public TestController(AcomodacaoService acomodacaoService) {
+    public AcomodacaoController(AcomodacaoService acomodacaoService) {
         this.acomodacaoService = acomodacaoService;
     }
 
@@ -42,35 +40,37 @@ public class TestController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<AcomodacaoModel>> getAllParkingSpots(@PageableDefault(page = 0, size = 10, sort = "codAcomodacao", direction = Sort.Direction.ASC) Pageable pageable){
-        return ResponseEntity.status(HttpStatus.OK).body(acomodacaoService.findAll(pageable));
+	public String listaAcomodacao(Model request) {
+		List<AcomodacaoModel> lista = acomodacaoService.findAll();
+		request.addAttribute("listaAcomodacao", lista);	
+		return "listaAcomodacao";
     }
 
     @GetMapping("/{codAcomocadao}")
-    public ResponseEntity<Object> getOneParkingSpot(@PathVariable(value = "codAcomocadao") Long codAcomocadao){
+    public ResponseEntity<Object> getOneAcomodacao(@PathVariable(value = "codAcomocadao") Long codAcomocadao){
         Optional<AcomodacaoModel> acomodacaoOptional = acomodacaoService.findById(codAcomocadao);
         if (!acomodacaoOptional.isPresent()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Parking Spot not found.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Acomodação não encontrada.");
         }
         return ResponseEntity.status(HttpStatus.OK).body(acomodacaoOptional.get());
     }
 
     @DeleteMapping("/{codAcomocadao}")
-    public ResponseEntity<Object> deleteParkingSpot(@PathVariable(value = "codAcomocadao") Long codAcomocadao){
+    public ResponseEntity<Object> deleteAcomodacao(@PathVariable(value = "codAcomocadao") Long codAcomocadao){
         Optional<AcomodacaoModel> acomodacaoOptional = acomodacaoService.findById(codAcomocadao);
         if (!acomodacaoOptional.isPresent()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Parking Spot not found.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Acomodação não encontrada.");
         }
         acomodacaoService.delete(acomodacaoOptional.get());
-        return ResponseEntity.status(HttpStatus.OK).body("Parking Spot deleted successfully.");
+        return ResponseEntity.status(HttpStatus.OK).body("Acomodação deletada com sucesso.");
     }
 
     @PutMapping("/{codAcomocadao}")
-    public ResponseEntity<Object> updateParkingSpot(@PathVariable(value = "codAcomocadao") Long codAcomocadao,
+    public ResponseEntity<Object> updateAcomodacao(@PathVariable(value = "codAcomocadao") Long codAcomocadao,
                                                     @RequestBody @Valid AcomodacaoModel acomodacaoModel){
         Optional<AcomodacaoModel> acomodacaoOptional = acomodacaoService.findById(codAcomocadao);
         if (!acomodacaoOptional.isPresent()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Parking Spot not found.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Acomodação NÃO ENCONTRADA.");
         }
                 acomodacaoModel.setCodAcomodacao(acomodacaoOptional.get().getCodAcomodacao());
                 return ResponseEntity.status(HttpStatus.OK).body(acomodacaoService.save(acomodacaoModel));

@@ -1,11 +1,10 @@
 package com.traveller.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.traveller.model.AcomodacaoModel;
@@ -25,8 +24,8 @@ public class AcomodacaoService {
         return acomodacaoRepository.save(acomodacaoModel);
     }
 
-    public Page<AcomodacaoModel> findAll(Pageable pageable) {
-        return acomodacaoRepository.findAll(pageable);
+    public List<AcomodacaoModel> findAll() {
+        return acomodacaoRepository.findAll();
     }
 
     public Optional<AcomodacaoModel> findById(Long codAcomodacao) {
