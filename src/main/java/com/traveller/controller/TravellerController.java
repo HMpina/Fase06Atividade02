@@ -45,13 +45,12 @@ public class TravellerController {
 		return "formularioacomodacao";
 	}
 
-	@SuppressWarnings("null")
-	@PostMapping("acomodacaoNovo")
-	public String acomodacaoNovo(Acomodacao requisicao) {
-		CrudRepository<Acomodacao, Long> acomodacaoRepository = null;
-		acomodacaoRepository.save(requisicao);
-		return "acomodacaoNovo";
-	}
+	//@PostMapping("acomodacaoNovo")
+	//public String acomodacaoNovo(Acomodacao requisicao) {
+		//CrudRepository<Acomodacao, Long> acomodacaoRepository;
+		//acomodacaoRepository.save(requisicao);
+		//return "acomodacao/listaAcomodacao";
+	///}
 	
 	@PostMapping("formularioNovo")
 	public String formularioNovo(Traveller requisicao) {

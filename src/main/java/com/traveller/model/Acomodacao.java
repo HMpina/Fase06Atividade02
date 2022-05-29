@@ -1,13 +1,16 @@
 package com.traveller.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
 
 @Entity
+@Table(name = "acomodacao")
 public class Acomodacao{
 	
 	@Id
@@ -15,19 +18,18 @@ public class Acomodacao{
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")
 	private Long codAcomodacao;
+    @Column(nullable = false, length = 2)
 	private int capacidadeAcomodacao;
-	private String tipoCama;
+    @Column(nullable = false)
+    private String tipoCama;
+    @Column(nullable = false)
 	private boolean wifi;
+    @Column(nullable = false)
 	private boolean cafeManha;
+    @Column(nullable = false)
 	private boolean disponibilidade;
 	
 	
-	public boolean isDisponibilidade() {
-		return disponibilidade;
-	}
-	public void setDisponibilidade(boolean disponibilidade) {
-		this.disponibilidade = disponibilidade;
-	}
 	public Long getCodAcomodacao() {
 		return codAcomodacao;
 	}
@@ -57,6 +59,12 @@ public class Acomodacao{
 	}
 	public void setCafeManha(boolean cafeManha) {
 		this.cafeManha = cafeManha;
+	}
+	public boolean isDisponibilidade() {
+		return disponibilidade;
+	}
+	public void setDisponibilidade(boolean disponibilidade) {
+		this.disponibilidade = disponibilidade;
 	}
 
 }
