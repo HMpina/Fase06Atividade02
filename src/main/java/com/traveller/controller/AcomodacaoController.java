@@ -8,8 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,13 +17,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.traveller.model.AcomodacaoModel;
 import com.traveller.repository.AcomodacaoRepository;
 //import com.traveller.services.AcomodacaoService;
 
 
-@Controller
+@RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/acomodacao")
 public class AcomodacaoController {
@@ -39,9 +39,9 @@ public class AcomodacaoController {
     }
 
     @GetMapping("/listaAcomodacao")
-	public String listaAcomodacao(ModelMap model) {
+	public String listaAcomodacao(Model request) {
 		List<AcomodacaoModel> lista = acomodacaoRepository.findAll();
-		model.addAttribute("listaAcomodacao", lista);	
+		request.addAttribute("listaAcomodacao", lista);	
 		return "listaAcomodacao";
     }
 
