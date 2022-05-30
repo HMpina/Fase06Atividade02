@@ -38,7 +38,7 @@ public class AcomodacaoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(acomodacaoRepository.save(acomodacaoModel));
     }
 
-    @GetMapping("/listaAcomodacao, /")
+    @GetMapping("/listaAcomodacao")
 	public String listaAcomodacao(Model request) {
 		List<AcomodacaoModel> lista = acomodacaoRepository.findAll();
 		request.addAttribute("listaAcomodacao", lista);	
