@@ -42,7 +42,7 @@ public class AcomodacaoController {
 	public String listaAcomodacao(Model request) {
 		List<AcomodacaoModel> lista = acomodacaoRepository.findAll();
 		request.addAttribute("listaAcomodacao", lista);	
-		return "listaAcomodacao";
+		return "redirect:/listaAcomodacao";
     }
 
     @GetMapping("/{codAcomocadao}")
