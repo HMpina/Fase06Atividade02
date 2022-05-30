@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
@@ -19,7 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.traveller.model.AcomodacaoModel;
-import com.traveller.services.AcomodacaoService;
+import com.traveller.repository.AcomodacaoRepository;
+//import com.traveller.services.AcomodacaoService;
 
 
 @RestController
@@ -27,28 +29,25 @@ import com.traveller.services.AcomodacaoService;
 @RequestMapping("/acomodacao")
 public class AcomodacaoController {
 
-    final AcomodacaoService acomodacaoService;
-
-    public AcomodacaoController(AcomodacaoService acomodacaoService) {
-        this.acomodacaoService = acomodacaoService;
-    }
+	@Autowired
+    private AcomodacaoRepository acomodacaoRepository;
 
     @PostMapping
-    public ResponseEntity<Object> saveAcomodacao(@RequestBody @Valid AcomodacaoModel acomodacaoModel){
+    public ResponseEntity<Object> saveAcomodacao(@RequestBody AcomodacaoModel acomodacaoModel){
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(acomodacaoService.save(acomodacaoModel));
+        return ResponseEntity.status(HttpStatus.CREATED).body(acomodacaoRepository.save(acomodacaoModel));
     }
 
-    @GetMapping("/listaAcomodacao")
+    @GetMapping("/listaAcomodacao, /")
 	public String listaAcomodacao(Model request) {
-		List<AcomodacaoModel> lista = acomodacaoService.findAll();
+		List<AcomodacaoModel> lista = acomodacaoRepository.findAll();
 		request.addAttribute("listaAcomodacao", lista);	
 		return "listaAcomodacao";
     }
 
     @GetMapping("/{codAcomocadao}")
     public ResponseEntity<Object> getOneAcomodacao(@PathVariable(value = "codAcomocadao") Long codAcomocadao){
-        Optional<AcomodacaoModel> acomodacaoOptional = acomodacaoService.findById(codAcomocadao);
+        Optional<AcomodacaoModel> acomodacaoOptional = acomodacaoRepository.findById(codAcomocadao);
         if (!acomodacaoOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Acomodação não encontrada.");
         }
@@ -57,23 +56,23 @@ public class AcomodacaoController {
 
     @DeleteMapping("/{codAcomocadao}")
     public ResponseEntity<Object> deleteAcomodacao(@PathVariable(value = "codAcomocadao") Long codAcomocadao){
-        Optional<AcomodacaoModel> acomodacaoOptional = acomodacaoService.findById(codAcomocadao);
+        Optional<AcomodacaoModel> acomodacaoOptional = acomodacaoRepository.findById(codAcomocadao);
         if (!acomodacaoOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Acomodação não encontrada.");
         }
-        acomodacaoService.delete(acomodacaoOptional.get());
+        acomodacaoRepository.delete(acomodacaoOptional.get());
         return ResponseEntity.status(HttpStatus.OK).body("Acomodação deletada com sucesso.");
     }
 
     @PutMapping("/{codAcomocadao}")
     public ResponseEntity<Object> updateAcomodacao(@PathVariable(value = "codAcomocadao") Long codAcomocadao,
                                                     @RequestBody @Valid AcomodacaoModel acomodacaoModel){
-        Optional<AcomodacaoModel> acomodacaoOptional = acomodacaoService.findById(codAcomocadao);
+        Optional<AcomodacaoModel> acomodacaoOptional = acomodacaoRepository.findById(codAcomocadao);
         if (!acomodacaoOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Acomodação NÃO ENCONTRADA.");
         }
                 acomodacaoModel.setCodAcomodacao(acomodacaoOptional.get().getCodAcomodacao());
-                return ResponseEntity.status(HttpStatus.OK).body(acomodacaoService.save(acomodacaoModel));
+                return ResponseEntity.status(HttpStatus.OK).body(acomodacaoRepository.save(acomodacaoModel));
     }
 
 
