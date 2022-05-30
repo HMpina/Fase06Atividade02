@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,10 +40,10 @@ public class AcomodacaoController {
     }
 
     @GetMapping("/listaAcomodacao")
-	public String listaAcomodacao(Model request) {
+	public String listaAcomodacao(ModelMap model) {
 		List<AcomodacaoModel> lista = acomodacaoRepository.findAll();
-		request.addAttribute("listaAcomodacao", lista);	
-		return "redirect:/listaAcomodacao";
+		model.addAttribute("listaAcomodacao", lista);	
+		return "listaAcomodacao";
     }
 
     @GetMapping("/{codAcomocadao}")
