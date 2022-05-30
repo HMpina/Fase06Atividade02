@@ -45,6 +45,12 @@ public class AcomodacaoController {
 		return "listaAcomodacao";
     }
 
+    @GetMapping
+    public ResponseEntity<List<AcomodacaoModel>> getAllAcomodacao(){
+        return ResponseEntity.status(HttpStatus.OK).body(acomodacaoRepository.findAll());
+    }
+    
+    
     @GetMapping("/{codAcomocadao}")
     public ResponseEntity<Object> getOneAcomodacao(@PathVariable(value = "codAcomocadao") Long codAcomocadao){
         Optional<AcomodacaoModel> acomodacaoOptional = acomodacaoRepository.findById(codAcomocadao);
